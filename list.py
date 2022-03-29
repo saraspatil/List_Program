@@ -1,320 +1,644 @@
-#check whether cold is present or not :
-s = 'today its very cold'
+## 1. interchange first and last element
 
-for i in s.split():
-    if i == 'cold':
-        print('cold is present')
-    else:
-        print('cold is not present')
-========================================================
-# WAP to get present and absent eligibility:
-nm = input('Enter student name: ')
-w = int(input('Enter total working days: '))
-a = int(input('Enter total absent days: '))
-per = float(((w-a)/w)*100)
-if per >= 75:
-    print((nm.title()),'you are allow to sit in exam.')
-else:
-    print(nm,'is not allow to sit in exam.')
-=============================================================
-# flow control block for percentage of number:
-per = float(input('Enter the percentage: '))
-if per < 25:
-    print('D')
-elif per >= 25 and per < 45:
-    print('C')
-elif per >=45 and per < 50:
-    print('B')
-elif per >= 50 and per < 60:
-    print('B+')
-elif per >= 60 and per < 80:
-    print('A')
-else:
-    print('A+')
-===============================================
-# WAP to get a 10% of bouns from salary:
-sal = int(input('Enter the net salary: '))
-yr = int(input('Enter the service years: '))
-if yr < 6:
-    print('Net bonus amount is: ',(sal*0.05))
-if yr >= 6 and yr <= 10:
-    print('Net bonus amount is: ',(sal*0.08))
-if yr > 10:
-    print('Net bonus amount is: ',(sal*0.1))
-=================================================
-# WAP to get the amount from market price with percentage given below:
-mp = int(input('Enter the marked price: '))
-if mp > 10000:
-    b = mp - (mp * 0.2)
-if mp > 7000 and mp <= 10000:
-    b = mp - (mp * 0.15)
-if mp <= 7000:
-    b = mp - (mp * 0.1)
-print('Net amount is:',b)
-=================================================
-# check if tringle is equilateral, scalene or isosceles:
-a = int(input('Enetr the 1st side: '))
-b = int(input('Enter the 2nd side: '))
-c = int(input('Enter the 3rd side: '))
-if a ==b and b== c and c == a:
-    print('The triangle is equilateral.')
-elif a != b and b != c and c != a:
-    print('The trangle is scalene')
-else:
-    print('The triangle is isosceles. ')
-=====================================================
-" WAP using flow control block to enter the operator from user and get the outpur from that one:
-a = float(input('Enter the first number: '))
-b = float(input('Enter the second number: '))
-c = input('Enter any operator: ')
-if c == '+':
-    z = a + b
-if c == '-':
-    z = a - b
-if c == '*':
-    z = a * b
-if c == '/':
-    z =  a / b
-if c == '%':
-    z = a % b
-if c == '//':
-    z = a//b
-if c == '**':
-    z = a ** b
-print('Value is: ',z)
+l = [1,2,3,4,5,6]
+
+res = []
+
+
+#1 method: (unpacking of data)
+a = [l[0]]
+b= l[1:-1]
+c = [l[-1]]
+
+res = c+b+a
+
+#2 method : (in built swap method)
+l[0],l[-1]=l[-1],l[0]
+l
+===================================================
+## 2. swap two element in a list
+
+l
+
+p1 = 1 
+p2 = 3
+
+#1 method:
+l[p1-1],l[p2-1] = l[p2-1],l[p1-1]
+
+#2 method:
+a = []
+b = []
+for i in  l:
+    if i == l[p1-1]:
+        a.append(i)
+    elif i == l[p2-1]:
+        b.append(i)
+l[p1-1] = b[0]
+l[p2-1] = a[0]
+=========================================================================
+## 3. swap elements in string list
+
+t = ['gfg','is','best','for','geek']
+
+#1 method: list comprehension + replace()
+[i.replace('g','h').replace('e','g').replace('h','e') for i in t]
+==============================================================================
+## 4. ways to find len of list
+
+l
+
+#1
+len(l)
+
+#2
+l.index(l[-1])+1
+
+#3
+list(enumerate(l))[-1][0]+1
+
+#4
+c = 0
+for i in l:
+    c+=1
+c
+
+#5
+[i for i in range(len(l)+1)][-1]
+
+#6 
+list(range(len(l)+1))[-1]
 =======================================================
-# WAP to get the wages of the workers:
-a = int(input('Enter the age: '))
-b = input('Enter the gender: ')
-c = int(input('Enter the number of days: '))
-if a>=18 and a < 30 and b.upper() == 'M':
-    z = 700 * int(c)
-    print('Your per day wages are:', z)
-elif a >= 18 and a < 30 and b.upper() == 'F':
-    z = 750 * int(c)
-    print('Your per day wages are:', z)
-elif a >= 30 and a <= 40 and b.upper() == 'M':
-    z = 800 * int(c)
-    print('Your per day wages are:', z)
-elif a >= 30 and a <= 40 and b.upper() == 'F':
-    z = 850 * int(c)
-    print('Your per day wages are:',z)
-else:
-    print('Enter appropriate age.')
-    ======================================================================
-# use indexing to find first middle and last character
-s = input('Enter any character: ')
-a1 = s[0]
-x = int(len(s)/2)
-a2 = a1 + s[x]
-a3 = a2 + s[len(s) - 1]
-print('first middle & last character of str is: ',a3)
-=========================================================
-# WAP to get the option of the diffrent meals with avilable money:
-m = int(input('Enter the available money: '))
-t = input('Type of pizza: ')
-if m >= 199:
-    if t == 'veg':
-        print('veg pizza order placed','Your available balance is',(m-199),'rupees')
-    else:
-        print('order for sandwitch.')
-else:
-    print('Go and eat vada pav')
-    ===================================
-# different techniques to get the mobile number separately:
-s = 'my contact number is : 7741856322'
-# print(s.split()[-1])
-# print(s.split(':')[-1])
-# print(s.find('7'))
-# print(s[23:])
-for i in s:
-        if i.isdigit() == True:
-                print(i,end='')
-==========================================
-# get the numeric value separate:
-s = 'kjdi3ksndjk5kjsndf88knfn 9fjfn76'
-a = 0
-for i in s:
-        if i.isdigit() == True:
-                a += int(i)
-print('Sum of number is:', a)
-==================================
-# to get the even numbers:
-e = [12, 3, 45, 67, 44, 30]
-for i in e:
-    if i % 2 == 0:
-        print(i)
-====================================
-# get sum of the number  from entered list:
-a = 0
-s = eval(input('Enetr the list: '))
-for i in s:
-    a += i
-print('Sum of number is: ',a)
-=========================
-n = 5
-while n > 0:
-    print(n)
-    n -= 1
-    =======================
-# to get number of occurances from the list:
-n = eval(input('Enter the list of four number: '))
-a = 0
-count = 0
-while count < 4:
-    a += n[count]
-    count += 1
-print('Addition of given number',n,'is',a)
-=============================================
+## 5. maximum of two numbers in python
 
-for i in range(10):
+l
 
-    if i <= 6:
-        break
-    else:
-        print(i)
-        ===================================
-for i in range(10):
+a =2
+b = 6
 
-    if i <= 6:
-        continue
-    else:
-        print(i)
-=====================================
+#1 method:
+max(a,b)
 
-# s = [1, 2, 3, 4]
-for i in range(1,6):
-    print(i**2)
-====================================
-# WAP to square of the list from range 1 to 6
-ls = []
-for i in range(1,6):
-    ls.append(i**2)
-print(ls)
-=======================================
-# WAP to square the list of range 1 to 7 using list comprehension:
-# syntax : [Expression for i in list/sequence if condition]
-print([i**2 for i in range(1, 8)])
-=======================================
-# WAP to square the list of range 1 to 6 using list comprehension only for even number:
-print([i**2 for i in range(1, 7) if i % 2 == 0])
-=====================================
-name = ['pratik','rohit','pradeep','amol']
-# print([word[0] for word in name])
-# i want to initialize only worg starting with 'p':
-print([word[0] for word in name if word.startswith('p')])
-========================================
-n1 = [10, 20, 30, 40]
-n2 = [1, 4, 20, 30]
-print([i for i in n1 if i  in n2])
-============================
-name = ['pratik','rohit','pradeep','amol']
-print([(i.upper(), len(i)) for i in name  ])
-==============================================
-
-a = 0
-b = 1
-for i in range(1, 5):
-    a += i
-    print(a)
-    b += i
-    print(b)
-==============================================
-# WAP to execute dic with number as key and value as square od that number from range 1 to 10.
-# expected output is : { (1: 1), (2:4),......}
-print({i: i**2 for i in range(1, 11)})
-====================================================
-# WAP to swap the number
-a = int(input('enter the value of a: '))
-b = int(input('enter the value of b: '))
-a, b = b, a
-print('value of a after swapping: ',a)
-print('value of b after swapping: ',b)
-==========================================
-WAP to get the expected output as:
-[10, 40, 1, 4]
-n1 = [10, 20, 30, 40]
-n2 = [1, 20, 30, 4]
-print([i for i in n1 + n2 if i not in set(n1).intersection(n2)])
+#2 method:
+sorted([a,b])[-1]
 =============================================================
+## 6. ways to check element is present in the list
 
-a = 'pratikjdhejbncnc'
-print('first number is: ', a[0], 'position of this word in given string: ', a.find(a[0]))
-print('last number is: ', a[-1], 'position of this word in given string: ', a.find(a[-1]))
-print('middle number is:', a[len(a) // 2], 'position of this word in given string: ', a.find(a[len(a) // 2]))
-print('length of the string is: ', len(a))
-===============================================================================================================
+l
 
-# WAP to process atm machine:
-import time
-nm = input('Enter your name: ')
-p = int(input('Enter the password: '))
-b = 5000
-if p == 1234:
-    print('its processing.....')
-    time.sleep(3)
-    print(' 1. mini statement.','\n','2. balance enquiry.','\n','3. withdrawal.')
-    c = int(input('Enetr the number from option: '))
-    if c == 1:
-        print('your last five transactions are in the receipt &', b, 'is your available balance')
-    elif c == 2:
-        print('your balance is: ',b)
-    elif c == 3:
-        w = int(input('Enter the amount: '))
-        if w <= b:
-            print(w, 'withdrawal is successful, your balance is: ', int(b - w))
-        else:
-            print('Insufficient balance.')
-    else:
-        print('Please enter the number between 1 to 3.')
+e = 6
+
+#1 conditional method:
+if e not in l:
+    print('not present')
 else:
-    print('its processing.....')
-    time.sleep(3)
-    print('incorrect pin')
-============================================================================================================
+    print('present')
 
-# expected output - [0, 30, 6, 30]
+#2 method:
+if l.count(e)>=1:
+    print('present')
+else:
+    print('not present')
 
-k = []
-def add(*args):
+#3 method:
+if len([i for i in l if i==e])>=1:
+    print('present')
+else:
+    print('not present')
 
-    a = 0
-    for val in args:
-       a += val
-    k.append(a)
-    print('addition is: ', a)
-add()
-add(10, 20)
-add(1, 2, 3)
-add(12, 3, 4, 5, 6)
-print('final list of addition is:', k)
-
-# expected o/p --> [[10, 20, 30],[3, 4, 5],[200, 300]]
+# 4 method:
 l1 = []
-def sample(**k):
-    for key in list(k.values()):
-        l1.append(key)
-sample(x1=10, x2=20, x3=30)
-l2 = []
-def sample(**k):
-    for key in list(k.values()):
-        l2.append(key)
-sample(x1=3, x2=4, x3=5)
+for i in l:
+    if i == e:
+        l1.append(i)
+if len(l1)>=1:
+    print('present')
+else:
+    print('not present')
+=======================================================
+## 6.5 revese the list:
+
+#1 using pop and range index
+res = [l.pop() for i in range(len(l))]
+
+
+res
+========================================================
+## 7. different way to clear a list 
+
+l= [1,2,3,4,5,6,6]
+l
+
+#1 method:
+for i in range(len(l)):
+    l.pop()
+l
+
+#2 method:
+l.clear()
+
+
+#3 method using while loop:
+while len(l)!=0:
+    for i in l:
+        l.remove(i)
+l
+
+#4 using '*=0' assignment operator
+l*=0
+l
+
+#5 method: del it deletes object also
+del(l)
+==================================================
+## 8. count occurance of an element
+
+from collections import Counter
+
+l
+
+#1 method
+[i[1] for i in list(Counter(l).items()) if i[0] == 6][0]
+
+#2 method
+for i in l:
+    if i == 6:
+        res = l.count(i)
+res
+
+#3 method
+l.count(6)
+
+#4 
+c=0
+for i in l:
+    if i == 6:
+        c+=1
+print(c)
+==============================================================
+## 9. find sum and avg:
+
+l
+
+#1 
+sum(l)
+
+avg = sum(l)/len(l)
+avg
+
+#2 method:
+import numpy as np
+
+np.array(l).mean()
+
+np.array(l).sum()
+
+np.cumsum(l)[-1]
+
+#3 method:
+sum = 0
+for i in l:
+    sum+=i
+print(sum)
+print(sum/len(l))
+
+#4 method:
+import math
+
+math.fsum(l)
+
+math.fsum(l)/len(l)
+======================================================
+## 10. sum of number digit in list:
+
+x = [11,22,33,44,55,66]
+
+#1 for loop:
+l1 = []
+for i in x:
+    l1.append(sum([int(j) for j in str(i)]))
+l1      
+
+#2 metho: nested list comprehension:
+[sum([int(j) for j in str(i)]) for i in x]
+==========================================================
+## 11. multiply all numbers in a list
+
+#1 method:
+import math
+
+math.prod(l)
+
+#2 method:
+prod = 1
+for i in l:
+    prod*=i
+prod
+
+#3 
+import numpy as np
+
+np.cumproduct(l)[-1]
+
+#4 method:
+from functools import reduce
+
+reduce((lambda x,y:x*y ),l)
+=================================================================
+## 12. find smallest number in a list
+
+l
+
+#1 method
+min(l)
+
+#2 method
+sorted(l)[0]
+
+#3 method
+l.sort(reverse=False)
+l[0]
+
+#4 method
+[i for i in l if i==min(l)][0]
+==================================================================
+## 13. largest number in list
+
+#1 method:
+max(l)
+
+#2 method:
+sorted(l)[-1]
+
+#3 ethod:
+l.sort(reverse=True)
+l[0]
+
+#4 method:
+[i for i in l if i==max(l)][0]
+====================================================================
+## 14. second largest number in a list
+
+l
+
+#1 method:
+res=set(l)
+list(res)[-2]
+
+#2 method:
+l1 =[]
+for i in l:
+    if i not in l1:
+        l1.append(i)
+l1.sort()
+l1[-2]
+=======================================================================
+## 15. print even number in a list
+
+l
+
+#1 list comprehension:
+[i for i in l if i%2==0]
+
+#2 for loop:
+l1 =[]
+for i in l:
+    if i % 2==0:
+        l1.append(i)
+print(l1)
+
+#3 method:
+even=list(map(lambda x:x if x%2==0 else 'nan', l))
+
+[i for i in even if type(i)== int]
+
+#OR
+import pandas as pd
+
+e = pd.DataFrame(even)
+e.dropna(inplace = True)
+[int(i)for i in np.array(e)]
+
+#4 method:
+list(filter(lambda x: x%2==1,l))
+=========================================================================
+## 16. print odd number in python
+
+l
+
+#1 method:
+sorted([i  for i in l if i%2==1])
+
+#2 method:
+l1 =[]
+for i in l:
+    if i%2==1:
+        l1.append(i)
+l1.sort()
+l1
+
+#3 method:
+odd=list(map(lambda x: x if x%2==1 else 'n',l))
+
+res=sorted([ i for i in odd if type(i)==int])
+
+res
+
+#4 method:
+list(filter(lambda x: x%2==1,l))
+=========================================================================
+## 17. to print all even number in range:
+
+s = 10
+e = 21
+
+#1 method:
+[i for i in range(s,e) if i%2==0]
+
+#2 for loop:
+l1=[]
+for i in range(s,e):
+    if i % 2==0:
+        l1.append(i)
+l1
+
+#3 method:
+list(filter(lambda x: x%2==0 , range(s,e)))
+
+#4 method:
+e1=list(map(lambda x: x if x%2==1 else 'n',range(s,e)))
+
+[i for i in e1 if type(i)==int]
+==========================================================================
+## 18. python programe to find even and odd in a list:
+
+#1 method:
+print('even is:',len([i for i in l if i%2==0]))
+print('odd is:',len([i for i in l if i%2==1]))
+
+#2 method:
+l1=[]
+l2=[]
+for i in l:
+    if i%2==0:
+        l1.append(i)
+    else:
+        l2.append(i)
+print('eve:',len(l1),'odd:',len(l2))
+
+#3 method:
+print('even is:',len(list(filter(lambda x: x%2==0,l))))
+print('odd is:',len(list(filter(lambda x: x%2==1,l))))
+
+#4 method:
+print('even is:',len([i for i in list(map(lambda x: x if x%2==0 else 'n',l)) if type(i)==int]))
+
+print('odd is:',len([i for i in list(map(lambda x: x if x%2==1 else 'n',l)) if type(i)==int]))
+======================================================================================================
+## 19. print positive number in list:
+
+li = [-1,-2,-3,-4,-5,1,2,3,4,5]
+
+#1 method:
+[i for i in li if i>0]
+
+#2 method:
+l1 = []
+for i in li:
+    if i>0:
+        l1.append(i)
+l1
+
+#3 method:
+list(filter(lambda x:x>0,li))
+
+#4 method:
+[i for i in list(map(lambda x: x if x>0 else 'n',li)) if type(i)==int]
+======================================================================================================
+## 20. print negative number in a list:
+
+li
+
+#1 method:
+[i for i in li if i<0]
+
+#2 method:
+l1=[]
+for i in li:
+    if i<0:
+        l1.append(i)
+l1
+
+#3 method:
+list(filter(lambda x:x<0,li))
+
+#4 method:
+[i for i in list(map(lambda x: x if x<0 else 'n',li)) if type(i)==int]
+==============================================================================================
+## 21. print all positive number in a range:
+
+s = -10
+e = 11
+
+#1 method:
+[i for i in range(s,e) if i>0]
+
+#2 method:
+l1=[]
+for i in range(s,e):
+    if i>0:
+        l1.append(i)
+l1
+
+#3 method:
+list(filter(lambda x: x>0, range(s,e)))
+
+#4 method:
+[i for i in list(map(lambda x: x if x>0 else 'n',range(s,e))) if type(i)==int]
+====================================================================================
+## 22. to count positive and negative element in a list
+
+#1 method:
+print('positive:',len([i for i in range(s,e) if i>=0]))
+print('negative:',len([i for i in range(s,e) if i<0]))
+
+#2 method:
+l1=[]
+l2=[]
+for i in range(s,e):
+    if i >=0:
+        l1.append(i)
+    else:
+        l2.append(i)
+print('positive:',len(l1))
+print('negative',len(l2))
+
+#3 method:
+print('positive:',len(list(filter(lambda x: x>=0,range(s,e)))))
+print('negative:',len(list(filter(lambda x: x<0,range(s,e)))))
+
+#4 method:
+print('positive:',len([i for i in list(map(lambda x:x if x>=0 else 'n',range(s,e))) if type(i)==int]))
+print('negative:',len([i for i in list(map(lambda x:x if x<0 else 'n',range(s,e))) if type(i)==int]))
+=============================================================================================================
+## 23. remove multiple element from list:
+
+l = [1,2,3,4,5,6,6]
+
+re = [1,4]
+
+#1 method:
+[i for i in l if i not in re]
+
+#2 method:
+l1=[]
+for i in l:
+    if i not in re:
+        l1.append(i)
+l1
+
+#3 method:
+[l.remove(i) for i in re ]
+l
+
+#4 method:
+list(filter(lambda x: l.remove(x),re))
+l
+========================================================================================================
+## 24. program to remove empty tuple from a list:
+
+t = [(),('pratik','p'),(),('santosh','s'),(),('salaskar','s'),(",")]
+
+#1 method:
+[tuple(i) for i in t if len(i)>=1]
+
+#2 method:
+l1 =[]
+for i in t:
+    if i !=():
+        l1.append((i))
+l1
+
+#3 method
+list(filter(None,t))
+
+#4 method:
+[i for i in t if i != ()]
+=======================================================================================
+## 25. to print duplicates in a list:
+    
+
+#1 method:
+list({i for i in l if l.count(i)>1})
+
+#2 method:
+l1=[]
+for i in l:
+    if l.count(i)>1:
+        l1.append(i)
+set(l1)
+
+#3 method:
+set(filter(lambda x:l.count(x)>1,l))
+
+#4 method:
+from collections import Counter
+
+res = Counter(l)
+
+[i[0] for i in list(res.items()) if i[1]>1]
+=======================================================================================
+## 26. remove empty list from list of list:
+
+x = [[1],[2],[3],[4],[],[]]
+
+#1 method:
+[i  for i in x if i != []]
+
+#2 method:
+l1 = []
+for i in x:
+    if i != []:
+        l1.append(i)
+l1
+
+#3 method:
+list(filter(lambda x : x!=[],x))
+
+#4 method:
+[i for i in list(map(lambda x:x if x != [] else 'n',x)) if type(i)==list or type(i)==int]
+=======================================================================================
+## 27. convert list to list of dictionary:
+
+l1 = ['gfg',3,'is',8]
+l2 = ['name','id']
+
+
+=======================================================================================
+## 28. uncommon element in list of list:
+
+l1 = [[1,2],[3,4],[5,6]]
+l2 = [[1,2],[3,4],[7,8]]
+
+
+#1 method:
+l3=[]
+for i in l1:
+    if i not in l2:
+        l3.append(i)
+for j in l2:
+    if j not in l1:
+        l3.append(j)
+l3
+
+#2 method:
+[i for i in l1 if i not in l2]+[j for j in l2 if j not in l1]
+
+#3 method:
+list(filter(lambda x: x not in l2,l1))+list(filter(lambda y: y not in l1,l2))
+
+ 
+=======================================================================================
+## 29. select random value from list of list
+
+l1
+
+import random
+
+#1 method:
 l3 = []
-def sample(**k):
+for i in l1:
+    for j in i:
+        l3.append(j)
 
-    for key in list(k.values()):
-         l3.append(key)
-sample(x1=200, x2=300)
-print([l1, l2, l3])
+random.choice(l3)
 
-#
-# WA lambda fuction to calculate cub of a number
-c = lambda x : x ** 3
-cube = c(9)
-print('cube of a number is', cube)
+#2 method:
+res = [j for i in l1 for j in i]
+res
 
-# WA lambda function to get even number
-s = lambda x, y: x == y
-k = s(1, 11)
-print('is numbers are equal: ',k)
+random.choice(res)
+
+#3 method:
+import numpy as np
+
+np.random.randint(res[0],res[-1],size=(1,1))[0][0]
+=======================================================================================
+## 30. reverse row sort in list of list
+
+l1
+
+#1 method:
+[[i for i in reversed(j)] for j in l1 ]
+
+#2 method:
+l3 = []
+for i in l1:
+    l3.append(list(reversed(i)))
+l3
+
+#3 method:
+[list(reversed(i)) for i in l1]
+
+#4 method:
+list(map(lambda x: list(reversed(x)),l1))
